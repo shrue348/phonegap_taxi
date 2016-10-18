@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Taxi app | shure348</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	
+</head>
+<body>
+	<div id="app" v-cloak>
+		<div class="form">
+			<div class="clear nowrap">
+				<input class="mgr5 inline-block" type="text" class="form-control" id="start_pos_input" placeholder="Ваше местоположение" v-model="startAddress">
+				<button class="inline-block" v-on:click="getStartGeo"><i class="icon-compass"></i></button>
+			</div>
+			<div class="clear nowrap">
+				<input class="mgr5 inline-block" type="text" class="form-control" id="finish_pos_input" placeholder="Куда едем" v-model="finishAddress">
+			</div>
+
+			<div v-if="cost" class="result">
+				<div class="cost">Стоимость поездки: {{ cost }}руб.</div>
+			</div>
+			
+		</div>
+
+		<div class="none">
+			<div>Старт: {{ startCoords }} </div>
+			<div>Старт строкой: {{ startAddress }}</div>
+			<div>Финиш: {{ finishCoords }} </div>
+			<div>Финиш строкой: {{ finishAddress }}</div>
+			<div>Дистанция км: {{ distance }}</div>
+			<div>Стоимость руб: {{ cost }}</div>
+		</div>
+
+		<div id="map"></div>
+
+		<div v-if="cost" class="cost">Стоимость поездки: {{ cost }}руб.</div>
+		
+	</div>
+	
+
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
